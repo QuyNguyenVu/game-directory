@@ -17,7 +17,6 @@
   },
   "main": "dist/server",
   "scripts": {
-    "start": "ts-node src/index.ts",
     "start:prod": "npx tsc && node dist/server",
     "db:init": "export $(cat .env | xargs) && node node_modules/db-migrate/bin/db-migrate up",
     "db:seed": "node seed/script.js"
