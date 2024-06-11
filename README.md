@@ -1,4 +1,4 @@
-# Game Directory
+# Game Directory Website
 ## Setting Up the Project Locally
 
 These instructions guide you through setting up the project to run on your local machine (localhost).
