@@ -27,7 +27,7 @@ con.connect(function(err) {
   }
 
   // Insert mock data for table games
-  console.info("Starting insert mocked data for categories ...");
+  console.info("Starting insert mocked data for games ...");
   const iconUrl = "https://placehold.co/600x600/png";
   for(let i = 0; i < gameData.length; i++) {
     let q = `INSERT INTO games (id, name, status, thumbnail, category_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?);`;
