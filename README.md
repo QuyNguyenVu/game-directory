@@ -30,6 +30,8 @@ docker compose up -d
 ```
 
 4. **Migrate database**
+
+Please wait a few minutes to all services (database, backend, frontend) to be ready before performing this step: 
 ```
 docker exec -it backend npm run db:init
 docker exec -it backend npm run db:seed
