@@ -1,0 +1,160 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ../../backend
+      dockerfile: ../deployment/local/backend/Dockerfile
+    container_name: backend
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    ports:
+      - '4000:4000'
+#    volumes:
+#      - ../../backend:/var/www/
+  frontend:
+    build:
+      context: ../../frontend
+      dockerfile: ../deployment/local/frontend/Dockerfile
+    container_name: frontend
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    ports:
+      - '80:3000'
+#    volumes:
+#      - ../../frontend:/var/www/
+
+  #
+  #  eklipse-scheduler:
+  #    build:
+  #      context: .
+  #      dockerfile: ./eklipse-scheduler/Dockerfile
+  #    restart: unless-stopped
+  #    tty: true
+  #    working_dir: /var/www
+  #    volumes:
+  #      - ../../:/var/www/
+  #
+  #  eklipse-publish-posts-worker:
+  #    build:
+  #      context: ../../
+  #      dockerfile: ./deployment/local/eklipse-publish-posts-worker/Dockerfile
+  ##      dockerfile: Dockerfile_publish_posts_worker
+  #    restart: unless-stopped
+  #    tty: true
+  ##    deploy:
+  ##      replicas: 2
+  #    working_dir: /var/www
+  #    volumes:
+  #      - ../../:/var/www/
+  #      - ../../storage:/var/www/storage
+  #      - ./eklipse-publish-posts-worker/worker.conf:/etc/supervisor/conf.d/worker.conf
+
+#  webserver:
+#    image: nginx:alpine
+#    restart: unless-stopped
+#    tty: true
+#    labels:
+#      serviceName: 'webserver-01'
+#    ports:
+#      #      - '8080:82'
+#      - '80:80'
+#    #      - '81:81'
+#    #      - '4430:443'
+#    #      - '84:84'
+#    volumes:
+#      - ./webserver/conf.d/:/etc/nginx/conf.d/
+#      - ../../../v1-internal/:/var/www/v1-internal/
+#      - ../../../v3-fe/:/var/www/v3-fe/
+#      - ../../../eklipse-studio-app/:/var/www/eklipse-studio-app/
+#      - ../../../eklipse.gg/:/var/www/eklipse/
+#  #      - certbot-etc:/etc/letsencrypt
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+#    command: mysqld --default-authentication-plugin=mysql_native_password
+    environment:
+      - "MYSQL_DATABASE=game-directory"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+      - "3306:3306"
+
+#  redis:
+#    image: bitnami/redis:6.0
+#    restart: unless-stopped
+#    environment:
+#      - ALLOW_EMPTY_PASSWORD=yes
+#      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+#    ports:
+#      - '6379:6379'
+#    volumes:
+#      - 'redis_data:/bitnami/redis/data'
+
+#  mongodb:
+#    image: mongo:latest
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+#    ports:
+#      - 27017:27017
+#    volumes:
+#      - mongodb_data:/data/db
+
+
+  #  redis-01:
+  #    image: bitnami/redis:6.0
+  #    restart: unless-stopped
+  #    environment:
+  #      - ALLOW_EMPTY_PASSWORD=yes
+  #      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+  #    ports:
+  #      - '6380:6379'
+  ##    volumes:
+  ##      - 'redis_data_01:/bitnami/redis/data'
+  #
+  #  redis-02:
+  #    image: bitnami/redis:6.0
+  #    restart: unless-stopped
+  #    environment:
+  #      - REDIS_PASSWORD=wNZ2z358&Cx$51BqzhA3
+  ##      - ALLOW_EMPTY_PASSWORD=yes
+  #      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+  #    ports:
+  #      - '6381:6379'
+  #    volumes:
+  #      - 'redis_data_01:/bitnami/redis/data'
+
+  #  eklipse-crawl-livestream-worker-01:
+  #    build:
+  #      context: ../../
+  #      dockerfile: ./deployment/local/eklipse-crawl-livestream-worker/Dockerfile
+  #    restart: unless-stopped
+  #    tty: true
+  #    working_dir: /var/www
+  #    environment:
+  #      - INDEX_WORKER=1
+  #    volumes:
+  #      - ../../:/var/www/
+  #      - ./eklipse-crawl-livestream-worker/worker.conf:/etc/supervisor/conf.d/worker.conf
+  #
+  #  eklipse-crawl-livestream-worker-02:
+  #    build:
+  #      context: ../../
+  #      dockerfile: ./deployment/local/eklipse-crawl-livestream-worker/Dockerfile
+  #    restart: unless-stopped
+  #    tty: true
+  #    working_dir: /var/www
+  #    environment:
+  #      - INDEX_WORKER=2
+  #    volumes:
+  #      - ../../:/var/www/
+  #      - ./eklipse-crawl-livestream-worker/worker.conf:/etc/supervisor/conf.d/worker.conf
+  #
+
+#networks:
+#  default:
+#    external:
+#      name: external-network

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Maroon"
+  },
+  {
+    "id": 2,
+    "name": "DimGrey"
+  },
+  {
+    "id": 3,
+    "name": "SeaShell"
+  },
+  {
+    "id": 4,
+    "name": "SaddleBrown"
+  },
+  {
+    "id": 5,
+    "name": "LightPink"
+  },
+  {
+    "id": 6,
+    "name": "SkyBlue"
+  },
+  {
+    "id": 7,
+    "name": "BurlyWood"
+  },
+  {
+    "id": 8,
+    "name": "HoneyDew"
+  },
+  {
+    "id": 9,
+    "name": "Gold"
+  },
+  {
+    "id": 10,
+    "name": "Azure"
+  }
+]

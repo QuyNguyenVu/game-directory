@@ -1,0 +1,6 @@
+.idea
+.env
+backend/node_modules
+backend/dist
+deployment/local/data
+frontend/_next
